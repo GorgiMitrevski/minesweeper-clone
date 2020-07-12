@@ -1,3 +1,9 @@
+body{
+    background-color: whitesmoke;
+}
+html{
+    min-width: 700px;
+}
 .main{
     border-style: solid;
     border-width: 10px;
@@ -6,8 +12,9 @@
     position: absolute;
 }
 .big{
-    display: table;
-    margin-left: 400px;
+    /* display: table; */
+    /* margin-left: 400px; */
+    padding-right: 20px;
 }
 
 .one-piece{
@@ -58,6 +65,7 @@
     top: 0;
     width: 100%;
     height: 100%;
+    margin-top: 150px;
     overflow: auto;
 }
 .modal-display{
@@ -72,4 +80,30 @@
 .timer{
     width: 80px;
     background-color: gray;
+}
+
+button{
+    width: 120px;
+    height: 30px;
+    background-color: greenyellow;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+input{
+    height: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 25px;
+    width: 120px;
+    border-style: solid;
+}
+
+label{
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#new-game{
+    display: none;
 }

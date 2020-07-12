@@ -5,8 +5,9 @@ class Fields {
         this.sec = 0;
     }
     setFields(){
-        this.prompt = prompt("Enter number of fields - height, width between 3-20 ", "10");
-        if(this.prompt > 20 || this.prompt < 3){
+        // this.prompt = prompt("Enter number of fields - height, width between 3-20 ", "10");
+        this.prompt = parseInt(document.getElementById('user-input').value);
+        if(this.prompt > 20 || this.prompt < 3 || this.prompt === "" || isNaN(this.prompt) ){
             this.prompt = 10;
         }
         this.N = this.prompt * this.prompt;
@@ -85,10 +86,12 @@ class Mines{
                 }
             } 
             //
-            var id = window.setInterval(function() {}, 0); // clear all intervals
+            let id = window.setInterval(function() {}, 0); // clear all intervals
             while (id--) {window.clearInterval(id);}
             //
-            setTimeout(function(){ alert(`You win for ${document.getElementById('seconds').textContent} seconds!`); }, 20);
+            const resultLabel = document.getElementById('result-label');
+            resultLabel.style.color = 'green';
+            setTimeout(function(){ resultLabel.textContent = `You win for ${document.getElementById('seconds').textContent} seconds!` }, 25);
             document.getElementById('modal').classList.add('modal-display');
         }
     }
@@ -152,10 +155,13 @@ class Check {
                 {
                     this.firstBtn[i].classList.add('cube-bomb');
                     //
-                    var id = window.setInterval(function() {}, 0); // clear all intervals
+                    let id = window.setInterval(function() {}, 0); // clear all intervals
                     while (id--) {window.clearInterval(id);}
                     //
-                    setTimeout(function(){ alert('You loose, there is mine !'); }, 25);
+                    // setTimeout(function(){ alert('You loose, there is mine !'); }, 25);
+                    const resultLabel = document.getElementById('result-label');
+                    resultLabel.style.color = 'red';
+                    setTimeout(function(){ resultLabel.textContent = 'You loose, there is mine !' }, 25);
                     document.getElementById('modal').classList.add('modal-display');
                 } else if(i === 0){
                     mines.checkEnd(i+1, i+(numberSmallWidth-0), i+1+(numberSmallWidth-0), i);
@@ -205,4 +211,17 @@ class App{
     }
 }
 
-new App();
+const btnStart = document.getElementById('enter-btn');
+const btnNewGame = document.getElementById('new-game');
+
+btnStart.addEventListener('click', () => {
+    new App();
+    btnStart.style.display = 'none';
+    document.getElementById('user-input').style.display = 'none';
+    document.getElementById('label').style.display = 'none';
+    btnNewGame.style.display = 'block';
+});
+
+btnNewGame.addEventListener('click', () => {
+    location.reload();
+});
