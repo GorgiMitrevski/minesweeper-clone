@@ -153,7 +153,11 @@ class Check {
             this.firstBtn[i].addEventListener('click', () => {
                 if(this.firstBtn[i].classList.contains('have-bomb') )
                 {
-                    this.firstBtn[i].classList.add('cube-bomb');
+                    for(let j = 0; j < this.firstBtn.length; j++){
+                        if( this.firstBtn[j].classList.contains('have-bomb') ){
+                            this.firstBtn[j].classList.add('cube-bomb');
+                        }
+                    } 
                     //
                     let id = window.setInterval(function() {}, 0); // clear all intervals
                     while (id--) {window.clearInterval(id);}
